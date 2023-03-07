@@ -8,12 +8,39 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+ 
+    
+    @IBOutlet weak var LoverTextField: UITextField!
+    
+    @IBOutlet weak var LoverDescripeTextField: UITextField!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        LoverTextField.resignFirstResponder()
+        LoverDescripeTextField.resignFirstResponder()
+        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Love" {
+      
+            if let knowByPeopleVC = segue.destination as? knowByPeopleViewController{
+               
+                knowByPeopleVC.loveText = LoverTextField.text!
+                knowByPeopleVC.loveTextDP = LoverDescripeTextField.text
+                
+            }
+        }
 
 
+
+
+    }
 }
+
 
